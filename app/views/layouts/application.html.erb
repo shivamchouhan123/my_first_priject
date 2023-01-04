@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auction</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+     <ul>
+        <% if user_signed_in? %>
+           <!-- <li>Hi, user<#/li>
+           <li><%#= "Hi, #{current_user.email}" %></li>
+           <li>Sign Out</li> -->
+            
+            <li> <%= link_to "Hi,#{current_user.email}",edit_user_registration_path %></li>
+            <li><%= link_to "Sign out",destroy_user_session_path, method: :delete %></li>
+         <% else %>
+            <!-- <li>Sign In</li>
+            <li>Sign Up</li> -->
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up",new_user_registration_path %></li>
+          <% end %>
+        <%= yield %>
+    </ul>
+  </body>
+</html>
