@@ -1,0 +1,10 @@
+<% unless @question.nil? %>
+<p><%= @question.question %></p>
+<% choices = [@question.answer, @question.option_1, @question.option_2, @question.option_3].each do |ci|%> 
+ <div class="custom-control custom-radio">  
+   <%= radio_button_tag "guess", ci, checked = ci == @question.answer%>  
+    
+     <%= label_tag "guess_#{ci}", ci %> 
+  </div>
+     <% end %>
+<% end %>

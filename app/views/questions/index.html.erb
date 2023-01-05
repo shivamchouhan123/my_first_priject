@@ -1,0 +1,17 @@
+<h1>Multiple Choice Questions</h1>
+<% @questions.each do |question| %> 
+   <div id="<%= dom_id(question) %>"> 
+     <p><%= question.question %></p>
+    <%  [question.answer,question.option_1,question.option_2,question.option_3] .each do |c| %>     
+    <div>           
+    <%= radio_button_tag "guess_#{question.id}", c,checked = c == question.answer, disabled: true %>   
+    <%= label_tag "guess_#{question.id}_#{c}", c %>     
+        <div class="actions">
+         <%= c.submit "Submit" %>
+        </div>              
+    </div>
+    <% end %>    
+    </div>
+
+
+ <% end %>
